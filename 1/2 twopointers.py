@@ -92,3 +92,45 @@ if __name__ == "__main__":
 
 
 #----------------------------------------------------
+# Container with most water
+
+def water(height):
+    l, r = 0, len(height) - 1
+    max_water = 0
+    while l < r:
+        width = r - l
+        max_height = max(height[l], height[r]) * width
+        max_water = max(max_height, max_water)
+        if height[l] < height[r]:
+            l +=  1
+        else:
+            r -= 1
+    return max_water
+
+if __name__ == "__main__":
+    height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+    print(water(height))
+
+#------------------------------------------------------
+
+# Valid palindrome
+
+def palindrome(s):
+    l, r = 0, len(s) - 1
+    while l < r:
+        while l < r and not s[l].isalnum():
+            l += 1
+        while l < r and not s[r].isalnum():
+            r -= 1
+        if s[l].lower() != s[r].lower():
+            return False
+        l += 1
+        r -= 1
+    return True
+
+if __name__ == "__main__":
+    s = "A man, a plan, a canal:Panama"
+    print(palindrome(s))
+
+
+#-------------------------------------------
