@@ -134,3 +134,55 @@ if __name__ == "__main__":
 
 
 #-------------------------------------------
+
+# Dutch national flag
+
+# for loop
+
+nums = [2, 0, 2, 1, 1, 0]
+l = []
+d = {0:0, 1:0, 2:0}
+for n in nums:
+    if n == 0:
+        d[0] += 1
+    elif n == 1:
+        d[1] += 1
+    else:
+        d[2] += 1
+
+for i in range(d[0]):
+    l.append(0)
+for i in range(d[1]):
+    l.append(1)
+for i in range(d[2]):
+    l.append(2)
+print(l)
+
+
+# 2 pointers
+def dnf(nums):
+    l, m, h = 0, 0, len(nums) - 1
+    while m <= h:
+        if nums[m] == 0:
+            nums[l], nums[m] = nums[m], nums[l]
+            l += 1
+            m += 1
+        elif nums[m] == 1:
+            m += 1
+        else:
+            nums[m], nums[h] = nums[h], nums[m]
+            h -= 1
+    return nums
+
+if __name__ == "__main__":
+    nums = [2, 0, 2, 1, 1, 0]
+    print(dnf(nums))
+
+#------------------------------------------
+
+# Trapping rain water
+
+# Question
+
+#-------------
+
